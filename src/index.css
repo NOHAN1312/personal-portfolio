@@ -1,0 +1,113 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap');
+
+@theme {
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-surface-dim: #100c1a;
+  --color-surface-container: #1c1729;
+  --color-surface-container-low: #151121;
+  --color-surface-container-high: #221d30;
+  --color-surface-container-highest: #282238;
+  
+  --color-primary: #dc8fff;
+  --color-secondary: #ff6f79;
+  --color-tertiary: #ffd39a;
+  
+  --color-on-surface: #ede4fa;
+  --color-on-surface-variant: #afa8bc;
+  --color-outline-variant: #4a4556;
+}
+
+body {
+  background-color: var(--color-surface-dim);
+  color: var(--color-on-surface);
+  font-family: var(--font-sans);
+}
+
+.sunset-gradient {
+  background: linear-gradient(135deg, #dc8fff, #ff6f79);
+}
+
+.sunset-text {
+  color: #0000;
+  background: linear-gradient(135deg, #dc8fff, #ff6f79);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.glass-panel {
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  background: #28223899;
+  border: 1px solid #4a455633;
+}
+
+.text-glow {
+  text-shadow: 0 0 35px rgba(220, 143, 255, 0.5), 0 0 10px rgba(220, 143, 255, 0.4);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-24px); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+  20%, 40%, 60%, 80% { transform: translateX(8px); }
+}
+
+@keyframes float-up-fade {
+  0% { opacity: 0; transform: translateY(0) scale(0.8); }
+  20% { opacity: 1; transform: translateY(-10px) scale(1.1); }
+  80% { opacity: 0.8; transform: translateY(-40px) scale(1); }
+  100% { opacity: 0; transform: translateY(-60px) scale(0.9); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+}
+
+.animate-shake {
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+.particle {
+  pointer-events: none;
+  animation: float-up-fade 1s ease-out forwards;
+}
+
+/* Scroll Reveal Animations */
+.reveal {
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+  will-change: opacity, transform;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+.reveal-up { transform: translateY(60px); }
+.reveal-down { transform: translateY(-60px); }
+.reveal-left { transform: translateX(-60px); }
+.reveal-right { transform: translateX(60px); }
+.reveal-scale { transform: scale(0.85); }
+
+
+body ::selection {
+  background-color: var(--color-primary);
+  color: #000;
+}
